@@ -3,16 +3,16 @@ kind: Deployment
 metadata:
   name: quiz-db-deployment
   labels:
-    app: quiz-server
+    app: quiz-db
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: quiz-server
+      app: quiz-db
   template:
     metadata:
       labels:
-        app: quiz-server
+        app: quiz-db
     spec:
       containers:
         - image: fegrus/quiz-db
@@ -36,4 +36,14 @@ spec:
                   name: db-secret
                   key: db-password
 ---
-
+apiVersion: v1
+kind: Service
+metadata:
+  name: db-service
+spec:
+  selector:
+    app: quiz-db
+  ports:
+    - port: 3306
+      targetPort: 3306
+      protocol: TCP

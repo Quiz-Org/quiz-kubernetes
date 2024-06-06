@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quiz-db-deployment
+  labels:
+    app: quiz-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quiz-server
+  template:
+    metadata:
+      labels:
+        app: quiz-server
+    spec:
+      containers:
+        - image: fegrus/quiz-db
+          name: db
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: db-configmap
+                  key: db-db-name
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: db-username
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: db-password
+---
+

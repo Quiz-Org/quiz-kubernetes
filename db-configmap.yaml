@@ -4,3 +4,4 @@ metadata:
   name: db-configmap
 data:
   db-db-name: 'myquizdb'
+  db-url: 'db-service'

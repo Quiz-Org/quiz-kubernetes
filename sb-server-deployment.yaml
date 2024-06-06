@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quiz-sb-server-deployment
+  labels:
+    app: quiz-sb-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quiz-sb-server
+  template:
+    metadata:
+      labels:
+        app: quiz-sb-server
+    spec:
+      containers:
+        - image: fegrus/quiz-sb-server
+          name: sb-server
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: db-configmap
+                  key: db-url
+            - name: MYSQL_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: db-configmap
+                  key: db-db-name
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: db-username
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: db-password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sb-service
+spec:
+  selector:
+    app: quiz-sb-server
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP

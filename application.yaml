@@ -9,11 +9,11 @@ spec:
   source:
     repoURL: https://github.com/FegrusB/quiz-kubernetes.git
     targetRevision: HEAD
+    path: quiz-server
 
   destination:
     server: https://kubernetes.default.svc
     namespace: default
-    path: quiz-server
 
   syncPolicy:
     syncOptions:

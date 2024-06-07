@@ -28,13 +28,13 @@ spec:
             - name: MYSQL_USER
               valueFrom:
                 secretKeyRef:
-                  name: db-secret
-                  key: db-username
+                  name: quiz-secrets
+                  key: db_username
             - name: MYSQL_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: db-secret
-                  key: db-password
+                  name: quiz-secrets
+                  key: db_password
 ---
 apiVersion: v1
 kind: Service

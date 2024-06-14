@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/FegrusB/quiz-kubernetes.git
+    repoURL: https://github.com/Quiz-Org/quiz-kubernetes.git
     targetRevision: HEAD
     path: quiz-server
 

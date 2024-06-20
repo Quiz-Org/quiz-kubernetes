@@ -5,5 +5,3 @@ resources:
 images:
 - name: fegrus/quiz-sb-server
   newTag: 0.1.0
-- name: image-name
-  newName: initial

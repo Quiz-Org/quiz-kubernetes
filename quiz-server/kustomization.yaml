@@ -4,4 +4,4 @@ resources:
   - "sb-server-deployment.yaml"
 images:
   - name:  image-name
-    newTag: initial
+    newName: initial

@@ -15,7 +15,7 @@ spec:
         app: quiz-sb-server
     spec:
       containers:
-        - image: fegrus/quiz-sb-server
+        - image: image-name
           name: sb-server
           ports:
             - containerPort: 8080

@@ -1,7 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - "sb-server-deployment.yaml"
+- sb-server-deployment.yaml
 images:
-  - name:  image-name
-    newTag: initial
+- name: fegrus/quiz-sb-server
+- name: image-name
+  newTag: initial

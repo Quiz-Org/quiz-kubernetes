@@ -8,4 +8,4 @@ resources:
 - sb-server-deployment.yaml
 images:
 - name: fegrus/quiz-sb-server
-  newTag: 0.1.3
+  newTag: 0.1.4
